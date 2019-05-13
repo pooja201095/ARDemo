@@ -17,7 +17,7 @@ const onxrloaded = () => {
   const initXrScene = ({ scene, camera }) => {
     // Add a grid of purple spheres to the scene. Objects in the scene at height/ y=0 will appear to
     // stick to physical surfaces.
-   var geometry = new THREE.BoxGeometry(700, 700, 700, 15, 5, 10);
+   var geometry = new THREE.BoxGeometry(5, 5, 5, 15, 5, 10);
    var material = new THREE.MeshBasicMaterial({
      color: 0xfffff,
      wireframe: true
