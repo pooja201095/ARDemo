@@ -15,7 +15,7 @@ const onxrloaded = () => {
     // stick to physical surfaces.
    var geometry = new THREE.BoxGeometry(5, 5, 5, 10, 10, 10);
    var material = new THREE.MeshBasicMaterial({
-     color: 0xfffff,
+     color: 0000000,
      wireframe: true
    });
    var cube = new THREE.Mesh(geometry, material);
