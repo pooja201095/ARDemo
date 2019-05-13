@@ -1,10 +1,6 @@
 // Copyright (c) 2018 8th Wall, Inc.
 
 const onxrloaded = () => {
-  const purple = 0xad50ff;
-  const cherry = 0xdd0065;
-  const mint = 0x00edaf;
-  const canary = 0xfcee21;
 
   // To illustrate how to integrate render updates with the camera run loop, we drive a cone in
   // a circle every three seconds.
@@ -17,7 +13,7 @@ const onxrloaded = () => {
   const initXrScene = ({ scene, camera }) => {
     // Add a grid of purple spheres to the scene. Objects in the scene at height/ y=0 will appear to
     // stick to physical surfaces.
-   var geometry = new THREE.BoxGeometry(5, 5, 5, 15, 5, 10);
+   var geometry = new THREE.BoxGeometry(5, 5, 5, 10, 10, 10);
    var material = new THREE.MeshBasicMaterial({
      color: 0xfffff,
      wireframe: true
@@ -30,7 +26,7 @@ const onxrloaded = () => {
 
     // Set the initial camera position relative to the scene we just laid out. This must be at a
     // height greater than y=0.
-    camera.position.set(0, 3, 0);
+    camera.position.set(0, -8, 20);
   };
 
   XR.addCameraPipelineModules([
