@@ -17,42 +17,16 @@ const onxrloaded = () => {
   const initXrScene = ({ scene, camera }) => {
     // Add a grid of purple spheres to the scene. Objects in the scene at height/ y=0 will appear to
     // stick to physical surfaces.
-    for (let i = -5; i <= 5; i += 0.5) {
-      for (let j = -5; j <= 5; j += 0.5) {
-        if (Math.round(i) != i && Math.round(j) != j) {
-          continue;
-        }
-        const sphere = new THREE.Mesh(
-          new THREE.SphereGeometry(0.03, 8, 8),
-          new THREE.MeshBasicMaterial({ color: purple })
-        );
-        sphere.position.set(i, 0, j);
-        scene.add(sphere);
-      }
-    }
+   var geometry = new THREE.BoxGeometry(700, 700, 700, 15, 5, 10);
+   var material = new THREE.MeshBasicMaterial({
+     color: 0xfffff,
+     wireframe: true
+   });
+   var cube = new THREE.Mesh(geometry, material);
+   scene.add(cube);
 
     // Add one cone in each cardinal direction, and three ahead. Objects in the scene at height
     // y=0 will appear to stick to physical surfaces.
-    const cones = [
-      { c: canary, p: [5, 0.5, 0] },
-      { c: mint, p: [-5, 0.5, 0] },
-      { c: cherry, p: [0, 0.5, 5] },
-      { c: cherry, p: [0, 0.5, -5] },
-      { c: canary, p: [-1, 0.5, -5] },
-      { c: mint, p: [1, 0.5, -5] }
-    ];
-    const shape = new THREE.ConeGeometry(0.25, 1, 8);
-    cones.forEach(({ c, p }) => {
-      const cone = new THREE.Mesh(
-        shape,
-        new THREE.MeshBasicMaterial({ color: c })
-      );
-      cone.position.set(...p);
-      if (p[0] == 0 && p[2] == -5) {
-        animateCone = cone;
-      } // save one cone for animation.
-      scene.add(cone);
-    });
 
     // Set the initial camera position relative to the scene we just laid out. This must be at a
     // height greater than y=0.
@@ -96,17 +70,17 @@ const onxrloaded = () => {
 
     // onUpdate is called once per camera loop prior to render. Any 3js geometry scene
     // would typically happen here.
-    onUpdate: () => {
-      // Update the position of the animating cone at a constant angular velocity.
-      const coneTheta =
-        (((Date.now() - startTime) % coneLoopMillis) * 2 * Math.PI) /
-        coneLoopMillis;
-      animateCone.position.set(
-        Math.sin(coneTheta) * 1.5,
-        0.5,
-        -Math.cos(coneTheta) * 1.5 - 3.5
-      );
-    }
+    // onUpdate: () => {
+    //   // Update the position of the animating cone at a constant angular velocity.
+    //   const coneTheta =
+    //     (((Date.now() - startTime) % coneLoopMillis) * 2 * Math.PI) /
+    //     coneLoopMillis;
+    //   animateCone.position.set(
+    //     Math.sin(coneTheta) * 1.5,
+    //     0.5,
+    //     -Math.cos(coneTheta) * 1.5 - 3.5
+    //   );
+    // }
   });
 
   // Call xrController.pause() / xrController.resume() when the button is pressed.
