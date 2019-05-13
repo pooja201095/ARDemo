@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>My first Three.js app</title>
+    <style>canvas { width: 100%; height: 100% }</style>
+    <script src="http://threejs.org/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.85.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js"></script>
+    <script async src="//apps.8thwall.com/xrweb?appKey=s2clJp7elc8aVAtOhBK1Ibo5b8Un2LSNcvoqr88YTUbFs5RzBZrMsL84qY7BfYyo7jowLT"></script>
+     
+
+    <script>
+        // @@@@@@@@@@@@
+        AFRAME.registerComponent('mythreejsthing', {
+            schema: {
+                color: {
+                    default: '#000'
+                },
+            },
+
+            update: function () {
+                var el= document.querySelector('myapp');
+                var camera = document.querySelector('a-entity[camera]').components.camera.camera;
+                camera.position.z = 20;
+                camera.position.y=-8;
+                var material = new THREE.MeshBasicMaterial({ color: 0000000, wireframe: true });
+                var geometry = new THREE.BoxGeometry(5,5,5, 10, 10, 10);
+                this.el.setObject3D('mesh', new THREE.Mesh(geometry, material));
+            },
+        });
+            // @@@@@@@@@@@@
+
+            //  var el = document.querySelector('myapp');
+            //     var camera = document.querySelector('a-entity[camera]').components.camera.camera;
+            //     camera.position.z = 20;
+            //     camera.position.y = -8;
+            //     var material = new THREE.MeshBasicMaterial({ color: 0000000, wireframe: true });
+            //     var geometry = new THREE.BoxGeometry(5, 5, 5, 10, 10, 10);
+            //     this.el.setObject3D('mesh', new THREE.Mesh(geometry, material));
+
+            // var scene = new THREE.Scene();
+            // var camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 10000);
+            // var renderer = new THREE.WebGLRenderer();
+            // var controls = new THREE.OrbitControls(camera);
+            // renderer.setSize(window.innerWidth, window.innerHeight);
+            // document.body.appendChild(renderer.domElement);
+            // var geometry = new THREE.BoxGeometry(700, 700, 700, 15, 5, 10);
+            // var material = new THREE.MeshBasicMaterial({ color: 0xfffff, wireframe: true });
+            // var cube = new THREE.Mesh(geometry, material);
+            // scene.add(cube);
+            // camera.position.z = 1000;
+            // function render() {
+            //     requestAnimationFrame(render);
+            //     // cube.rotation.x = 0.1;
+            //     // cube.rotation.y = 0.1;
+            //     renderer.render(scene, camera);
+            // };
+            // render();
+            // controls.update();
+
+            // function animate() {
+            //     requestAnimationFrame(animate);
+            //     // required if controls.enableDamping or controls.autoRotate are set to true
+            //     controls.update();
+            //     renderer.render(scene, camera);
+            //     }
+            //     console.log(scene);
+
+    </script>
+</head>
+
+<body>
+    <a-scene>
+        <a-entity id="myapp" mythreejsthing position="0 0 -3">
+            <a-entity camera="active: true" look-controls wasd-controls position="0 1.6 0" data-aframe-default-camera></a-entity>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
