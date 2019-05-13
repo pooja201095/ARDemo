@@ -4,16 +4,13 @@ const onxrloaded = () => {
 
   // To illustrate how to integrate render updates with the camera run loop, we drive a cone in
   // a circle every three seconds.
-  let animateCone;
-  const startTime = Date.now();
-  const coneLoopMillis = 3000;
 
   // Populates some object into an XR scene and sets the initial camera position. The scene and
   // camera come from xr3js, and are only available in the camera loop lifecycle onStart() or later.
   const initXrScene = ({ scene, camera }) => {
     // Add a grid of purple spheres to the scene. Objects in the scene at height/ y=0 will appear to
     // stick to physical surfaces.
-   var geometry = new THREE.BoxGeometry(5, 5, 5, 10, 10, 10);
+   var geometry = new THREE.BoxGeometry(5, 5, 5, 10,10, 10);
    var material = new THREE.MeshBasicMaterial({
      color: 0000000,
      wireframe: true
@@ -26,7 +23,7 @@ const onxrloaded = () => {
 
     // Set the initial camera position relative to the scene we just laid out. This must be at a
     // height greater than y=0.
-    camera.position.set(0, -8, 20);
+    camera.position.set(0, 3, 20);
   };
 
   XR.addCameraPipelineModules([
@@ -45,7 +42,7 @@ const onxrloaded = () => {
   XR.addCameraPipelineModule({
     // Camera pipeline modules need a name. It can be whatever you want but must be unique within
     // your app.
-    name: "myawesomeapp",
+    name: "mycubeapp",
 
     // onStart is called once when the camera feed begins. In this case, we need to wait for the
     // XR.Threejs scene to be ready before we can access it to add content. It was created in
