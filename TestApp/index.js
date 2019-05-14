@@ -17,6 +17,8 @@ const onxrloaded = () => {
    });
    var cube = new THREE.Mesh(geometry, material);
    scene.add(cube);
+     cube.rotation.x += 0.1;
+     cube.rotation.y += 0.1;
 
     // Add one cone in each cardinal direction, and three ahead. Objects in the scene at height
     // y=0 will appear to stick to physical surfaces.
