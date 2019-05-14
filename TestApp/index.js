@@ -14,6 +14,8 @@ const onxrloaded = () => {
           });
           var cube = new THREE.Mesh(geometry, material);
           scene.add(cube);
+          cube.rotation.x += 0.1;
+          cube.rotation.y += 0.1;
 
           // Set the initial camera position relative to the scene we just laid out. This must be at a
           // height greater than y=0.
@@ -54,12 +56,12 @@ const onxrloaded = () => {
         facing: camera.quaternion
       });
     },
+
     // onUpdate is called once per camera loop prior to render. Any 3js geometry scene
     // would typically happen here.
-//     onUpdate: () => {
-//         cube.rotation.x += 0.3;
-//         cube.rotation.y += 0.3;
-//     }
+    // onUpdate: () => {
+      
+    // }
   });
 
   // Call xrController.pause() / xrController.resume() when the button is pressed.
