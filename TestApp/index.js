@@ -2,31 +2,25 @@
 
 const onxrloaded = () => {
 
-  // To illustrate how to integrate render updates with the camera run loop, we drive a cone in
-  // a circle every three seconds.
-
   // Populates some object into an XR scene and sets the initial camera position. The scene and
   // camera come from xr3js, and are only available in the camera loop lifecycle onStart() or later.
   const initXrScene = ({ scene, camera }) => {
-    // Add a grid of purple spheres to the scene. Objects in the scene at height/ y=0 will appear to
-    // stick to physical surfaces.
-   var geometry = new THREE.BoxGeometry(5, 5, 5, 10,10, 10);
-   var material = new THREE.MeshBasicMaterial({
-     color: 0000000,
-     wireframe: true
-   });
-   var cube = new THREE.Mesh(geometry, material);
-   scene.add(cube);
-     cube.rotation.x += 0.1;
-     cube.rotation.y += 0.1;
+          //Objects in the scene at height/ y=0 will appear to
+          // stick to physical surfaces.
+          var geometry = new THREE.BoxGeometry(5, 5, 5, 10, 10, 10);
+          var controls = new THREE.OrbitControls(camera);
+          var material = new THREE.MeshBasicMaterial({
+            color: 0000000,
+            wireframe: true
+          });
+          var cube = new THREE.Mesh(geometry, material);
+          scene.add(cube);
+          controls.update();
 
-    // Add one cone in each cardinal direction, and three ahead. Objects in the scene at height
-    // y=0 will appear to stick to physical surfaces.
-
-    // Set the initial camera position relative to the scene we just laid out. This must be at a
-    // height greater than y=0.
-    camera.position.set(0, 3, 20);
-  };
+          // Set the initial camera position relative to the scene we just laid out. This must be at a
+          // height greater than y=0.
+          camera.position.set(0, 3, 20);
+        };;
 
   XR.addCameraPipelineModules([
     // Add camera pipeline modules.
@@ -54,6 +48,8 @@ const onxrloaded = () => {
       const { scene, camera } = XR.Threejs.xrScene();
 
       // Add some objects to the scene and set the starting camera position.
+        cube.rotation.x = 0.1;
+        cube.rotation.y = 0.1;
       initXrScene({ scene, camera });
 
       // Sync the xr controller's 6DoF position and camera paremeters with our scene.
@@ -62,19 +58,17 @@ const onxrloaded = () => {
         facing: camera.quaternion
       });
     },
+    animate:()=> {
+                requestAnimationFrame(animate);
+                // required if controls.enableDamping or controls.autoRotate are set to true
+                controls.update();
+                initXrScene({ scene, camera });
+                },
 
     // onUpdate is called once per camera loop prior to render. Any 3js geometry scene
     // would typically happen here.
     // onUpdate: () => {
-    //   // Update the position of the animating cone at a constant angular velocity.
-    //   const coneTheta =
-    //     (((Date.now() - startTime) % coneLoopMillis) * 2 * Math.PI) /
-    //     coneLoopMillis;
-    //   animateCone.position.set(
-    //     Math.sin(coneTheta) * 1.5,
-    //     0.5,
-    //     -Math.cos(coneTheta) * 1.5 - 3.5
-    //   );
+      
     // }
   });
 
