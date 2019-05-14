@@ -48,8 +48,6 @@ const onxrloaded = () => {
       const { scene, camera } = XR.Threejs.xrScene();
 
       // Add some objects to the scene and set the starting camera position.
-        cube.rotation.x = 0.1;
-        cube.rotation.y = 0.1;
       initXrScene({ scene, camera });
 
       // Sync the xr controller's 6DoF position and camera paremeters with our scene.
@@ -58,18 +56,12 @@ const onxrloaded = () => {
         facing: camera.quaternion
       });
     },
-    animate:()=> {
-                requestAnimationFrame(animate);
-                // required if controls.enableDamping or controls.autoRotate are set to true
-                controls.update();
-                initXrScene({ scene, camera });
-                },
-
     // onUpdate is called once per camera loop prior to render. Any 3js geometry scene
     // would typically happen here.
-    // onUpdate: () => {
-      
-    // }
+    onUpdate: () => {
+        cube.rotation.x = 0.1;
+        cube.rotation.y = 0.1;
+    }
   });
 
   // Call xrController.pause() / xrController.resume() when the button is pressed.
