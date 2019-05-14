@@ -14,8 +14,6 @@ const onxrloaded = () => {
           });
           var cube = new THREE.Mesh(geometry, material);
           scene.add(cube);
-          cube.rotation.x += 0.1;
-          cube.rotation.y += 0.1;
 
           // Set the initial camera position relative to the scene we just laid out. This must be at a
           // height greater than y=0.
