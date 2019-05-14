@@ -59,8 +59,8 @@ const onxrloaded = () => {
     // onUpdate is called once per camera loop prior to render. Any 3js geometry scene
     // would typically happen here.
     onUpdate: () => {
-        cube.rotation.x = 0.1;
-        cube.rotation.y = 0.1;
+        cube.rotation.x += 0.3;
+        cube.rotation.y += 0.3;
     }
   });
 
