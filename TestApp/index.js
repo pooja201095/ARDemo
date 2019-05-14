@@ -8,14 +8,12 @@ const onxrloaded = () => {
           //Objects in the scene at height/ y=0 will appear to
           // stick to physical surfaces.
           var geometry = new THREE.BoxGeometry(5, 5, 5, 10, 10, 10);
-          var controls = new THREE.OrbitControls(camera);
           var material = new THREE.MeshBasicMaterial({
             color: 0000000,
             wireframe: true
           });
           var cube = new THREE.Mesh(geometry, material);
           scene.add(cube);
-          controls.update();
 
           // Set the initial camera position relative to the scene we just laid out. This must be at a
           // height greater than y=0.
@@ -58,10 +56,10 @@ const onxrloaded = () => {
     },
     // onUpdate is called once per camera loop prior to render. Any 3js geometry scene
     // would typically happen here.
-    onUpdate: () => {
-        cube.rotation.x += 0.3;
-        cube.rotation.y += 0.3;
-    }
+//     onUpdate: () => {
+//         cube.rotation.x += 0.3;
+//         cube.rotation.y += 0.3;
+//     }
   });
 
   // Call xrController.pause() / xrController.resume() when the button is pressed.
