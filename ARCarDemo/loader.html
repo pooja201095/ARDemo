@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    canvas {
+      width: 100%;
+      height: 100%;
+      color: transparent;
+    }
+  </style>
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://threejs.org/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.85.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="legacyJsonLoader.js"></script>
+  
+</head>
+<body>
+  <script>
+    var loader = new THREE.ObjectLoader();
+    var scene = new THREE.Scene();
+    var renderer, controls ;
+    var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
+    controls = new THREE.OrbitControls(camera);
+    
+
+    function init() {
+      var loadobj = loader.load(
+        // resource URL
+        "car.json",
+
+        // onLoad callback
+        // Here the loaded data is assumed to be an object
+        function (obj) {
+          // Add the loaded object to the scene
+          scene.add(obj);
+        });
+      renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.position.set(0, 2.5, 3);
+      document.body.appendChild(renderer.domElement);
+    }
+      // var loadobj = loader.load(
+      //   // resource URL
+      //   "car.json",
+
+      //   // onLoad callback
+      //   // Here the loaded data is assumed to be an object
+      //   function (obj) {
+      //     // Add the loaded object to the scene
+      //     scene.add(obj);
+      //   },
+
+      //   // onProgress callback
+      //   function (xhr) {
+      //     console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      //   },
+
+      //   // onError callback
+      //   function (err) {
+      //     console.error("An error happened");
+      //   }
+      // );
+      init();
+      controls.update();
+
+       animate();
+      // function animate() {
+      //     requestAnimationFrame(animate);
+      //     render();
+      //   }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            // required if controls.enableDamping or controls.autoRotate are set to true
+            controls.update();
+            renderer.render(scene, camera);
+          }
+        function render() {
+          // camera.lookAt(scene.position);
+           requestAnimationFrame(render)
+          renderer.render(scene, camera);
+        }
+
+      // Alternatively, to parse a previously loaded JSON structure
+      // var object = loader.parse(loadObj);
+
+      // scene.add(object);
+
+  </script>
+</body>
+</html>
