@@ -48,8 +48,8 @@
 // Copyright (c) 2018 8th Wall, Inc.
 
 const onxrloaded = () => {
-          var controls;
-          var renderer = new THREE.WebGLRenderer({ alpha: true });
+    var controls;
+    var renderer = new THREE.WebGLRenderer({ alpha: true });
 
   // Populates some object into an XR scene and sets the initial camera position. The scene and
   // camera come from xr3js, and are only available in the camera loop lifecycle onStart() or later.
@@ -68,13 +68,12 @@ const onxrloaded = () => {
               scene.add(obj);
             }
           );
-          
           renderer.setSize(window.innerWidth, window.innerHeight);
 
           // Set the initial camera position relative to the scene we just laid out. This must be at a
           // height greater than y=0.
           camera.position.set(0, 2.5, 7);
-    document.body.appendChild(renderer.domElement);
+          document.body.appendChild(renderer.domElement);
         };;
 
   XR.addCameraPipelineModules([
@@ -93,7 +92,7 @@ const onxrloaded = () => {
   XR.addCameraPipelineModule({
     // Camera pipeline modules need a name. It can be whatever you want but must be unique within
     // your app.
-    name: "mycubeapp",
+    name: "ArCarDemo",
 
     // onStart is called once when the camera feed begins. In this case, we need to wait for the
     // XR.Threejs scene to be ready before we can access it to add content. It was created in
@@ -101,7 +100,10 @@ const onxrloaded = () => {
     onStart: ({ canvasWidth, canvasHeight }) => {
       // Get the 3js sceen from xr3js.
       const { scene, camera } = XR.Threejs.xrScene();
-              controls = new THREE.OrbitControls(camera);
+      controls = new THREE.OrbitControls(camera);
+      controls.enableZoom = true;
+      controls.autoRotate = true;
+
       // Add some objects to the scene and set the starting camera position.
       initXrScene({ scene, camera });
       controls.update();
@@ -120,16 +122,11 @@ const onxrloaded = () => {
     },
 
     animate: () => {
+        controls.update();
         requestAnimationFrame(animate);
         // required if controls.enableDamping or controls.autoRotate are set to true
-        controls.update();
         renderer.render(scene, camera);
-    },
-    render: () => {
-        // camera.lookAt(scene.position);
-        requestAnimationFrame(render);
-        renderer.render(scene, camera);
-}
+    }
   });
 
   const canvas = document.getElementById("camerafeed");
@@ -138,7 +135,10 @@ const onxrloaded = () => {
   canvas.addEventListener(
     "touchstart",
     e => {
-      e.touches.length == 2 && XR.XrController.recenter();
+        e.touches.length == 2 && XR.XrController.recenter();
+        // const x = e.touches[0].clientX / window.innerWidth;
+        // const y = e.touches[0].clientY / window.innerHeight;
+        // const hitTestResults = XR.XrController.hitTest(x, y, ['FEATURE_POINT'])
     },
     true
   );
