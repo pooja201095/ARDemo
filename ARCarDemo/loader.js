@@ -139,9 +139,6 @@ const onxrloaded = () => {
     "touchstart",
     e => {
       e.touches.length == 2 && XR.XrController.recenter();
-              const x = e.touches[0].clientX / window.innerWidth;
-        const y = e.touches[0].clientY / window.innerHeight;
-        const hitTestResults = XR.XrController.hitTest(x, y, ['FEATURE_POINT'])
     },
     true
   );
