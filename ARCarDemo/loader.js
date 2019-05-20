@@ -117,8 +117,6 @@ const onxrloaded = () => {
     onUpdate: () => {
       console.log("Inside update func");
       controls.update();
-
-      animate();
     },
 
     animate: () => {
