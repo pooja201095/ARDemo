@@ -48,7 +48,7 @@
 // Copyright (c) 2018 8th Wall, Inc.
 
 const onxrloaded = () => {
-          var controls = new THREE.OrbitControls(camera);
+          var controls;
           var renderer = new THREE.WebGLRenderer({ alpha: true });
 
   // Populates some object into an XR scene and sets the initial camera position. The scene and
@@ -101,7 +101,7 @@ const onxrloaded = () => {
     onStart: ({ canvasWidth, canvasHeight }) => {
       // Get the 3js sceen from xr3js.
       const { scene, camera } = XR.Threejs.xrScene();
-
+              controls = new THREE.OrbitControls(camera);
       // Add some objects to the scene and set the starting camera position.
       initXrScene({ scene, camera });
 
@@ -141,6 +141,9 @@ const onxrloaded = () => {
     "touchstart",
     e => {
       e.touches.length == 2 && XR.XrController.recenter();
+              const x = e.touches[0].clientX / window.innerWidth;
+        const y = e.touches[0].clientY / window.innerHeight;
+        const hitTestResults = XR.XrController.hitTest(x, y, ['FEATURE_POINT'])
     },
     true
   );
