@@ -48,6 +48,8 @@
 // Copyright (c) 2018 8th Wall, Inc.
 
 const onxrloaded = () => {
+          var controls = new THREE.OrbitControls(camera);
+          var renderer = new THREE.WebGLRenderer({ alpha: true });
 
   // Populates some object into an XR scene and sets the initial camera position. The scene and
   // camera come from xr3js, and are only available in the camera loop lifecycle onStart() or later.
@@ -55,8 +57,6 @@ const onxrloaded = () => {
           //Objects in the scene at height/ y=0 will appear to
           // stick to physical surfaces.
           var loader = new THREE.ObjectLoader();
-          var controls = new THREE.OrbitControls(camera);
-          var renderer = new THREE.WebGLRenderer({ alpha: true });
           var loadobj = loader.load(
             // resource URL
             "car.json",
