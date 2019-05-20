@@ -69,7 +69,7 @@ const onxrloaded = () => {
 
           // Set the initial camera position relative to the scene we just laid out. This must be at a
           // height greater than y=0.
-          camera.position.set(0, 3, 20);
+          camera.position.set(0, 2.5, 3);
         };;
 
   XR.addCameraPipelineModules([
