@@ -54,6 +54,7 @@ const onxrloaded = () => {
   const initXrScene = ({ scene, camera }) => {
           //Objects in the scene at height/ y=0 will appear to
           // stick to physical surfaces.
+        var loader = new THREE.ObjectLoader()
           var loadobj = loader.load(
             // resource URL
             "car.json",
