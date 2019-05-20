@@ -54,7 +54,9 @@ const onxrloaded = () => {
   const initXrScene = ({ scene, camera }) => {
           //Objects in the scene at height/ y=0 will appear to
           // stick to physical surfaces.
-        var loader = new THREE.ObjectLoader()
+          var loader = new THREE.ObjectLoader();
+          var controls = new THREE.OrbitControls(camera);
+          var renderer = new THREE.WebGLRenderer({ alpha: true });
           var loadobj = loader.load(
             // resource URL
             "car.json",
@@ -66,10 +68,13 @@ const onxrloaded = () => {
               scene.add(obj);
             }
           );
+          
+          renderer.setSize(window.innerWidth, window.innerHeight);
 
           // Set the initial camera position relative to the scene we just laid out. This must be at a
           // height greater than y=0.
           camera.position.set(0, 2.5, 7);
+    document.body.appendChild(renderer.domElement);
         };;
 
   XR.addCameraPipelineModules([
@@ -111,7 +116,22 @@ const onxrloaded = () => {
     // would typically happen here.
     onUpdate: () => {
       console.log("Inside update func");
-    }
+      controls.update();
+
+      animate();
+    },
+
+    animate: () => {
+        requestAnimationFrame(animate);
+        // required if controls.enableDamping or controls.autoRotate are set to true
+        controls.update();
+        renderer.render(scene, camera);
+    },
+    render: () => {
+        // camera.lookAt(scene.position);
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
+}
   });
 
   const canvas = document.getElementById("camerafeed");
