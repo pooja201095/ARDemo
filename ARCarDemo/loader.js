@@ -104,6 +104,7 @@ const onxrloaded = () => {
               controls = new THREE.OrbitControls(camera);
       // Add some objects to the scene and set the starting camera position.
       initXrScene({ scene, camera });
+      controls.update();
 
       // Sync the xr controller's 6DoF position and camera paremeters with our scene.
       XR.XrController.updateCameraProjectionMatrix({
@@ -116,7 +117,6 @@ const onxrloaded = () => {
     // would typically happen here.
     onUpdate: () => {
       console.log("Inside update func");
-      controls.update();
     },
 
     animate: () => {
