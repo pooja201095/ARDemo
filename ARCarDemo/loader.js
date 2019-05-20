@@ -69,7 +69,7 @@ const onxrloaded = () => {
 
           // Set the initial camera position relative to the scene we just laid out. This must be at a
           // height greater than y=0.
-          camera.position.set(0, 2.5, 3);
+          camera.position.set(0, 2.5, 7);
         };;
 
   XR.addCameraPipelineModules([
@@ -109,9 +109,9 @@ const onxrloaded = () => {
 
     // onUpdate is called once per camera loop prior to render. Any 3js geometry scene
     // would typically happen here.
-    // onUpdate: () => {
-      
-    // }
+    onUpdate: () => {
+      console.log("Inside update func");
+    }
   });
 
   const canvas = document.getElementById("camerafeed");
