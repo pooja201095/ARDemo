@@ -100,7 +100,7 @@ const onxrloaded = () => {
     onStart: ({ canvasWidth, canvasHeight }) => {
       // Get the 3js sceen from xr3js.
       const { scene, camera } = XR.Threejs.xrScene();
-      controls = new THREE.OrbitControls(camera);
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableZoom = true;
       controls.autoRotate = true;
 
