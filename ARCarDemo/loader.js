@@ -101,8 +101,8 @@ const onxrloaded = () => {
       // Get the 3js sceen from xr3js.
       const { scene, camera } = XR.Threejs.xrScene();
       controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableZoom = true;
-      controls.autoRotate = true;
+//       controls.enableZoom = true;
+//       controls.autoRotate = true;
 
       // Add some objects to the scene and set the starting camera position.
       initXrScene({ scene, camera });
@@ -136,9 +136,6 @@ const onxrloaded = () => {
     "touchstart",
     e => {
         e.touches.length == 2 && XR.XrController.recenter();
-        // const x = e.touches[0].clientX / window.innerWidth;
-        // const y = e.touches[0].clientY / window.innerHeight;
-        // const hitTestResults = XR.XrController.hitTest(x, y, ['FEATURE_POINT'])
     },
     true
   );
