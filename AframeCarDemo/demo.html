@@ -8,7 +8,7 @@
             height: 100%
         }
     </style>
-    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="http://threejs.org/build/three.min.js"></script>
     <script src="//cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
     <script src="gesture-detector.js"></script>
     <script src="hold-drag.js"></script>
@@ -28,12 +28,12 @@
     <a-scene xrweb gesture-detector xrextras-almost-there xrextras-loading xrextras-runtime-error>
         <a-entity id="myapp" mythreejsthing position="0 0 -3">
             </a-entity>
-            <!-- <a-entity camera="active: true" look-controls wasd-controls position="0 1.6 0" data-aframe-default-camera></a-entity> -->
-            <a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
-                      fuse: false;
-                      rayOrigin: mouse;">
-            </a-camera>
-            <a-entity model="#myapp" class="cantap" hold-drag two-finger-spin pinch-scale scale="0.025 0.025 0.025"></a-entity>
+            <a-entity id="camera" camera="active: true" look-controls wasd-controls position="0 8 8" raycaster="objects: .cantap" cursor=" fuse: false; rayOrigin: mouse;" data-aframe-default-camera></a-entity>
+        <!-- <a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
+            fuse: false;
+            rayOrigin: mouse;">
+        </a-camera> -->
+        <a-entity model="#myapp" class="cantap" hold-drag two-finger-spin pinch-scale scale="0.025 0.025 0.025"></a-entity>
     </a-scene>
 </body>
 
