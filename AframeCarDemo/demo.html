@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <title>My first Three.js app</title>
+    <style>
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+    </style>
+    <script src="http://threejs.org/build/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js"></script>
+    <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+    <script async src="//apps.8thwall.com/xrweb?appKey=s2clJp7elc8aVAtOhBK1Ibo5b8Un2LSNcvoqr88YTUbFs5RzBZrMsL84qY7BfYyo7jowLT"></script>
+
+
+    <script>
+
+        // @@@@
+        const onxrloaded = () => {
+
+                // Populates some object into an XR scene and sets the initial camera position. The scene and
+                // camera come from xr3js, and are only available in the camera loop lifecycle onStart() or later.
+                const initXrScene = ({ scene, camera }) => {
+                    //Objects in the scene at height/ y=0 will appear to
+                    // stick to physical surfaces.
+                    AFRAME.registerComponent('mythreejsthing', {
+                        schema: {
+                            color: {
+                                default: '#000'
+                            },
+                        },
+                        init: function () {
+                            var el = document.querySelector('myapp');
+                            var camera = document.querySelector('a-entity[camera]').components.camera.camera;
+                            camera.position.z = 5;
+                            camera.position.y = -3;
+                            var loader = new THREE.ObjectLoader();
+                            var that = this;
+                            loader.load(
+                                // resource URL
+                                "car.json",
+
+                                // onLoad callback
+                                // Here the loaded data is assumed to be an object
+                                function (obj) {
+                                    // Add the loaded object to the scene
+                                    that.el.setObject3D('obj', obj);
+                                }
+                            );
+                        }
+                    });
+                };;
+
+                XR.addCameraPipelineModules([
+                    // Add camera pipeline modules.
+                    // Existing pipeline modules.
+                    XR.GlTextureRenderer.pipelineModule(), // Draws the camera feed.
+                    XR.Threejs.pipelineModule(), // Creates a ThreeJS AR Scene.
+                    XR.XrController.pipelineModule(), // Enables SLAM tracking.
+                    XRExtras.AlmostThere.pipelineModule(), // Detects unsupported browsers and gives hints.
+                    XRExtras.RuntimeError.pipelineModule() // Shows an error image on runtime error.
+                ]);
+
+                // Add custom logic to the camera loop. This is done with camera pipeline modules that provide
+                // logic for key lifecycle moments for processing each camera frame. In this case, we'll be
+                // adding onStart logic for scene initialization, and onUpdate logic for scene updates.
+                XR.addCameraPipelineModule({
+                    // Camera pipeline modules need a name. It can be whatever you want but must be unique within
+                    // your app.
+                    name: "mycarapp",
+
+                    // onStart is called once when the camera feed begins. In this case, we need to wait for the
+                    // XR.Threejs scene to be ready before we can access it to add content. It was created in
+                    // XR.Threejs.pipelineModule()'s onStart method.
+                    onStart: ({ canvasWidth, canvasHeight }) => {
+                        // Get the 3js sceen from xr3js.
+                        const { scene, camera } = XR.Threejs.xrScene();
+
+                        // Add some objects to the scene and set the starting camera position.
+                        initXrScene({ scene, camera });
+
+                        // Sync the xr controller's 6DoF position and camera paremeters with our scene.
+                        XR.XrController.updateCameraProjectionMatrix({
+                            origin: camera.position,
+                            facing: camera.quaternion
+                        });
+                    },
+
+                    // onUpdate is called once per camera loop prior to render. Any 3js geometry scene
+                    // would typically happen here.
+                    // onUpdate: () => {
+
+                    // }
+                });
+
+                const canvas = document.getElementById("camerafeed");
+                // Call XrController.recenter() when the canvas is tapped with two fingers. This resets the
+                // ar camera to the position specified by XrController.updateCameraProjectionMatrix() above.
+                canvas.addEventListener(
+                    "touchstart",
+                    e => {
+                        e.touches.length == 2 && XR.XrController.recenter();
+                    },
+                    true
+                );
+
+                // Open the camera and start running the camera run loop.
+                XR.run({ canvas });
+            };
+        // @@@@@
+
+        // AFRAME.registerComponent('mythreejsthing',{
+        //     schema: {
+        //         color: {
+        //             default: '#000'
+        //         },
+        //     },
+        //         init: function () {
+        //             var el = document.querySelector('myapp');
+        //             var camera = document.querySelector('a-entity[camera]').components.camera.camera;
+        //             camera.position.z = 5;
+        //             camera.position.y = -3;
+        //             var loader = new THREE.ObjectLoader();
+        //             var that = this;
+        //             loader.load(
+        //                 // resource URL
+        //                 "car.json",
+
+        //                 // onLoad callback
+        //                 // Here the loaded data is assumed to be an object
+        //                 function (obj) {
+        //                     // Add the loaded object to the scene
+        //                     that.el.setObject3D('obj', obj);
+        //                 }
+        //             );
+        //         }
+        //     });
+            window.onload = () => {
+                    window.XR ? onxrloaded() : window.addEventListener("xrloaded", onxrloaded);
+                };
+
+    </script>
+</head>
+
+<body>
+    <a-scene id="camerafeed">
+        <a-entity id="myapp" mythreejsthing position="0 0 -3">
+            <a-entity camera="active: true" look-controls wasd-controls position="0 1.6 0" data-aframe-default-camera></a-entity>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
