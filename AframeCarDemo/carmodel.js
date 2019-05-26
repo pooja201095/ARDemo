@@ -6,9 +6,11 @@
             },
                 init: function () {
                     var el = document.querySelector('myapp');
-                    var camera = document.querySelector('#camera').components.camera.camera;
-                    camera.position.z = 5;
-                    camera.position.y = -3;
+                    // var camera = document.querySelector(
+                    //   "a-camera[camera]"
+                    // ).components.camera.camera;
+                    // camera.position.z = 5;
+                    // camera.position.y = -3;
                     var loader = new THREE.ObjectLoader();
                     var that = this;
                     loader.load(
