@@ -24,7 +24,7 @@
 
 <body>
     <a-scene xrweb gesture-detector xrextras-almost-there xrextras-loading xrextras-runtime-error>
-        <!-- We can define assets here to be loaded when A-Frame initializes -->
+<!--         <!-- We can define assets here to be loaded when A-Frame initializes -->
         <a-assets>
             <!-- Credit to Poly by Google for the model: https://poly.google.com/view/5ZMAz7_ucTn -->
             <a-asset-item id="sandCastleModel" src="gtr.glb"></a-asset-item>
@@ -47,8 +47,8 @@
 
         <a-entity id="ground" class="cantap" geometry="primitive: box"
             material="color: #ffffff; transparent: true; opacity: 0.0" scale="1000 2 1000" position="0 -1 0">
-        </a-entity>
-        <!-- <a-entity id="myapp" mythreejsthing position="0 0 -3">
+        </a-entity> -->
+        <a-entity id="myapp" mythreejsthing position="0 0 -3">
         </a-entity>
 
         <a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
@@ -67,7 +67,7 @@
 
         <a-entity id="ground" class="cantap" geometry="primitive: box"
             material="color: #ffffff; transparent: true; opacity: 0.0" scale="1000 2 1000" position="0 -1 0">
-        </a-entity> -->
+        </a-entity>
     </a-scene>
 </body>
 
