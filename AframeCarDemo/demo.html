@@ -17,14 +17,40 @@
     <script src="two-finger-spin.js"></script>\
     <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
     <script defer src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
-    <script async src="//apps.8thwall.com/xrweb?appKey=s2clJp7elc8aVAtOhBK1Ibo5b8Un2LSNcvoqr88YTUbFs5RzBZrMsL84qY7BfYyo7jowLT"></script>
+    <script async
+        src="//apps.8thwall.com/xrweb?appKey=s2clJp7elc8aVAtOhBK1Ibo5b8Un2LSNcvoqr88YTUbFs5RzBZrMsL84qY7BfYyo7jowLT">
+    </script>
 </head>
 
 <body>
     <a-scene xrweb gesture-detector xrextras-almost-there xrextras-loading xrextras-runtime-error>
-            <a-entity id="myapp" mythreejsthing position="0 0 -3">
-            </a-entity>
-           
+        <!-- We can define assets here to be loaded when A-Frame initializes -->
+        <a-assets>
+            <!-- Credit to Poly by Google for the model: https://poly.google.com/view/5ZMAz7_ucTn -->
+            <a-asset-item id="sandCastleModel" src="gtr.glb"></a-asset-item>
+        </a-assets>
+
+        <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
+        <a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
+              fuse: false;
+              rayOrigin: mouse;">
+        </a-camera>
+
+        <a-entity light="type: directional;
+                   intensity: 0.8;" position="1 4.3 2.5">
+        </a-entity>
+
+        <a-light type="ambient" intensity="1"></a-light>
+
+        <a-entity gltf-model="#sandCastleModel" class="cantap" hold-drag two-finger-spin pinch-scale
+            scale="0.025 0.025 0.025"></a-entity>
+
+        <a-entity id="ground" class="cantap" geometry="primitive: box"
+            material="color: #ffffff; transparent: true; opacity: 0.0" scale="1000 2 1000" position="0 -1 0">
+        </a-entity>
+        <!-- <a-entity id="myapp" mythreejsthing position="0 0 -3">
+        </a-entity>
+
         <a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
                   fuse: false;
                   rayOrigin: mouse;">
@@ -33,14 +59,15 @@
         <a-entity light="type: directional;
                        intensity: 0.8;" position="1 4.3 2.5">
         </a-entity>
-        
+
         <a-light type="ambient" intensity="1"></a-light>
 
-        <a-entity model="#myapp" class="cantap" hold-drag two-finger-spin pinch-scale scale="0.025 0.025 0.025"></a-entity>
-
-        <a-entity id="ground" class="cantap" geometry="primitive: box" material="color: #ffffff; transparent: true; opacity: 0.0"
-            scale="1000 2 1000" position="0 -1 0">
+        <a-entity model="#myapp" class="cantap" hold-drag two-finger-spin pinch-scale scale="0.025 0.025 0.025">
         </a-entity>
+
+        <a-entity id="ground" class="cantap" geometry="primitive: box"
+            material="color: #ffffff; transparent: true; opacity: 0.0" scale="1000 2 1000" position="0 -1 0">
+        </a-entity> -->
     </a-scene>
 </body>
 
