@@ -1,7 +1,7 @@
  AFRAME.registerComponent('mythreejsthing',{
             schema: {
                 color: {
-                    default: '#000'
+                    default: '#CC0000'
                 },
             },
                 init: function () {
