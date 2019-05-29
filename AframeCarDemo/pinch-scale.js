@@ -17,6 +17,7 @@ AFRAME.registerComponent('pinch-scale', {
         this.el.sceneEl.removeEventListener('twofingermove', this.handleEvent)
     },
     handleEvent: function (event) {
+        debugger;
         this.scaleFactor *= 1 + event.detail.spreadChange / event.detail.startSpread
         this.scaleFactor = Math.min(Math.max(this.scaleFactor, this.data.min), this.data.max)
 
