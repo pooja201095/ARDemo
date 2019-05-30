@@ -3,12 +3,16 @@
                 color: {
                     default: '#000'
                 },
-                colors : ["white", "red", "black", "grey", "blue"],
-                colorIndex : 0
+                colors : {
+                    default: ["white", "red", "black", "grey", "blue"]
+                },
+                colorIndex : {
+                    default: 0
+                }
             },
                 init: function (color) {
                     var el = document.querySelector('myapp');
-                    var loadser = new THREE.ObjectLoader();
+                    var loader = new THREE.ObjectLoader();
                     var that = this;
 
                     if(!color) {
@@ -35,13 +39,18 @@
                         }
                         );
                     }
-                    
-                     $("body").click(carClick);
+                    let func = this.carClick.bind(this);
+                     $("body").click(func);
                 },
                 carClick : function () {
-                      schema.colorIndex =
-                        (schema.colorIndex + 1) % schema.colors.length;
-//                       $("#myapp").remove();
-                      init(schema.colors[schema.colorIndex]);
+                      this.data.colorIndex =
+                        (this.data.colorIndex + 1) %
+                        this.data.colors.length;
+                      $("#myapp").remove();
+                      this.init(
+                        this.data.colors[
+                          this.data.colorIndex
+                        ]
+                      );
                 }
             });
