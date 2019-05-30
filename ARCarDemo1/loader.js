@@ -49,6 +49,7 @@ recognition.onresult = function(event) {
   if(!mobileRepeatBug) {
     noteContent = transcript;
     noteTextarea.val(noteContent);
+    recognition.stop();
     init(noteContent);
   }
 };
@@ -244,6 +245,8 @@ function init(color) {
         scene.add(obj);
       }
     );
+    recognition.start();
+
   }
   
   renderer = new THREE.WebGLRenderer();
