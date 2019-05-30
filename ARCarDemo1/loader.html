@@ -5,8 +5,42 @@
   <title>Document</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta16/shoelace.css">
+  <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
+
+    <div class="container">
+
+        <h1>Voice Controlled Notes App</h1>
+        <p class="page-description">A tiny app that allows you to take notes by recording your voice</p>
+        <p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript">Read the full article on Tutorialzine »</a></p>
+
+        <h3 class="no-browser-support">Sorry, Your Browser Doesn't Support the Web Speech API. Try Opening This Demo In Google Chrome.</h3>
+
+        <div class="app"> 
+            <h3>Add New Note</h3>
+            <div class="input-single">
+                <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea>
+            </div>         
+            <button id="start-record-btn" title="Start Recording">Start Recognition</button>
+            <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button>
+            <button id="save-note-btn" title="Save Note">Save Note</button>   
+            <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p>
+            
+            <h3>My Notes</h3>
+            <ul id="notes">
+                <li>
+                    <p class="no-notes">You don't have any notes.</p>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
   <script src="https://threejs.org/build/three.min.js"></script>
@@ -15,5 +49,7 @@
   <script async src="//apps.8thwall.com/xrweb?appKey=s2clJp7elc8aVAtOhBK1Ibo5b8Un2LSNcvoqr88YTUbFs5RzBZrMsL84qY7BfYyo7jowLT"></script>
   <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
   <script src="loader.js"></script>
+
+
 </body>
 </html>
