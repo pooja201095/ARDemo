@@ -41,7 +41,7 @@
                 carClick : function () {
                       schema.colorIndex =
                         (schema.colorIndex + 1) % schema.colors.length;
-                      $("#myapp").remove();
+//                       $("#myapp").remove();
                       init(schema.colors[schema.colorIndex]);
                 }
             });
