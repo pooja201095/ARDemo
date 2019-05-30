@@ -46,7 +46,7 @@
                       this.data.colorIndex =
                         (this.data.colorIndex + 1) %
                         this.data.colors.length;
-                      $("#myapp").remove();
+//                       $("#myapp").remove();
                       this.init(
                         this.data.colors[
                           this.data.colorIndex
