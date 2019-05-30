@@ -1,22 +1,20 @@
  AFRAME.registerComponent('mythreejsthing',{
             schema: {
                 color: {
-                    default: '#CC0000'
+                    default: '#000'
                 },
+                colors : ["white", "red", "black", "grey", "blue"],
+                colorIndex : 0
             },
-                init: function () {
+                init: function (color) {
                     var el = document.querySelector('myapp');
-                    // var camera = document.querySelector(
-                    //   "a-camera[camera]"
-                    // ).components.camera.camera;
-                    // camera.position.z = 5;
-                    // camera.position.y = -3;
-                    var loader = new THREE.ObjectLoader();
+                    var loadser = new THREE.ObjectLoader();
                     var that = this;
-                    loader.load(
-                        // resource URL
-                        "car.json",
 
+                    if(!color) {
+                        loader.load(
+                        // resource URL
+                        "black.json",
                         // onLoad callback
                         // Here the loaded data is assumed to be an object
                         function (obj) {
@@ -24,5 +22,26 @@
                             that.el.setObject3D('obj', obj);
                         }
                     );
+                    } else {
+                        loader.load(
+                        // resource URL
+                        color + ".json",
+
+                        // onLoad callback
+                        // Here the loaded data is assumed to be an object
+                        function(obj) {
+                            // Add the loaded object to the scene
+                            that.el.setObject3D('obj', obj);
+                        }
+                        );
+                    }
+                    
+                     $("body").click(carClick);
+                },
+                carClick : function () {
+                      schema.colorIndex =
+                        (schema.colorIndex + 1) % schema.colors.length;
+                      $("#myapp").remove();
+                      init(schema.colors[schema.colorIndex]);
                 }
             });
