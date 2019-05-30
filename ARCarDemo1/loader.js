@@ -47,8 +47,9 @@ recognition.onresult = function(event) {
   var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
 
   if(!mobileRepeatBug) {
-    noteContent += transcript;
+    noteContent = transcript;
     noteTextarea.val(noteContent);
+    init(noteContent);
   }
 };
 
@@ -88,7 +89,6 @@ $('#pause-record-btn').on('click', function(e) {
 // Sync the text inside the text area with the noteContent variable.
 noteTextarea.on('input', function() {
   noteContent = $(this).val();
-  init($(this).val());
 })
 
 $('#save-note-btn').on('click', function(e) {
