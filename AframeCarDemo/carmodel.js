@@ -40,7 +40,9 @@
                         );
                     }
                     let func = this.carClick.bind(this);
-                     $("body").click(func);
+                     // $("body").click(func);
+                    $("body").unbind().click(func);
+                 
                 },
                 carClick : function () {
                       this.data.colorIndex =
