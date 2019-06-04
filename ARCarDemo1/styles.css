@@ -42,10 +42,13 @@ button:focus {
 
 .app {
     margin: 40px auto;
+    text-align: left;
 }
 
 #note-textarea {
     margin: 20px 0;
+    height: 50px;
+    width: auto;
 }
 
 #recording-instructions {
