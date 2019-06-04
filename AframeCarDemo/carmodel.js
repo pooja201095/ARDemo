@@ -41,8 +41,8 @@
                     }
                     let func = this.carClick.bind(this);
                      // $("body").click(func);
-//                     $("body").unbind().click(func);
-                 $('body').append("Test element");
+                     $('body').unbind().click(func);
+                 $('body').append("<button>Start</button>");
                  
                 },
                 carClick : function () {
