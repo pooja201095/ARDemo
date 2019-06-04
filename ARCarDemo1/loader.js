@@ -21,9 +21,9 @@ recognition.onresult = function(event) {
     var colorArray = ["blue","white","grey","red","black"];
     var colorPicked;
 
-    wordsArray.forEach(function(word){
+    wordsArray.forEach(function(word) {
       if(colorArray.indexOf(word) > -1) {
-        colorPicked = (words[words.indexOf(source)]);
+        colorPicked = (colorArray[colorArray.indexOf(word)]);
         console.log(colorPicked)
       }
     });
