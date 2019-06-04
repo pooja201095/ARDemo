@@ -53,30 +53,6 @@ noteTextarea.on('input', function() {
   noteContent = $(this).val();
 })
 
-notesList.on('click', function(e) {
-  e.preventDefault();
-  var target = $(e.target);
-
-  // Listen to the selected note.
-  if(target.hasClass('listen-note')) {
-    var content = target.closest('.note').find('.content').text();
-    readOutLoud(content);
-  }
-});
-
-// function readOutLoud(message) {
-// 	var speech = new SpeechSynthesisUtterance();
-
-//   // Set the text and voice attributes.
-// 	speech.text = message;
-// 	speech.volume = 1;
-// 	speech.rate = 1;
-// 	speech.pitch = 1;
-  
-// 	window.speechSynthesis.speak(speech);
-// }
-
-
 
 /*-----------------------------
       Helper Functions 
