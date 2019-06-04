@@ -113,17 +113,8 @@ AFRAME.registerComponent("mythreejsthing", {
         }
       );
     }
-    let func = this.carClick.bind(this);
-    // $("body").click(func);
-    $("body")
-      .unbind()
-      .click(func);
+
     // $("body").append("<button class='startBtn'>Start</button>");  //"' + myName + '"')
      $("body").append('<div class="container"><p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript"></a></p><div class="app"> <div class="input-single"><textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea></div><button id="start-record-btn" title="Start Recording">Start</button></div></div>');
-  },
-  carClick: function() {
-    this.data.colorIndex = (this.data.colorIndex + 1) % this.data.colors.length;
-    //                       $("#myapp").remove();
-    this.init(this.data.colors[this.data.colorIndex]);
   }
 });
