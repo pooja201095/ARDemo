@@ -11,7 +11,8 @@ AFRAME.registerComponent("mythreejsthing", {
     }
   },
   speechFunc: function() {
-    var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
     var recognition = new SpeechRecognition();
     var noteTextarea = $("#note-textarea");
     var instructions = $("#recording-instructions");
@@ -88,6 +89,7 @@ AFRAME.registerComponent("mythreejsthing", {
     var el = document.querySelector("myapp");
     var loader = new THREE.ObjectLoader();
     var that = this;
+    var count = 1;
 
     if (!color) {
       loader.load(
@@ -115,6 +117,14 @@ AFRAME.registerComponent("mythreejsthing", {
     }
 
     // $("body").append("<button class='startBtn'>Start</button>");  //"' + myName + '"')
-     $("body").append('<div class="container"><p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript"></a></p><div class="app"> <div class="input-single"><textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea></div><button id="start-record-btn" title="Start Recording">Start</button></div></div>');
+    $("body").append(
+      '<div class="container"><p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript"></a></p><div class="app"> <div class="input-single"><textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea></div><button id="start-record-btn" title="Start Recording">Start</button></div></div>'
+    ); 
+    $("#start-record-btn").click(this.speechFunc);
+    // if (count == 1) {
+    //     this.speechFunc();
+    //     count++;
+    // }
+    
   }
 });
