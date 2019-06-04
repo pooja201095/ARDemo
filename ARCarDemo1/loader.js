@@ -3,7 +3,8 @@ var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogniti
 var recognition = new SpeechRecognition();
 var noteTextarea = $('#note-textarea');
 var instructions = $('#recording-instructions');
-var noteContent = '';
+var noteContent = '',
+  color;
 recognition.continuous = true;
 
 recognition.onresult = function(event) {
@@ -16,7 +17,17 @@ recognition.onresult = function(event) {
     noteContent = transcript;
     noteTextarea.val(noteContent);
     recognition.stop();
-    init(noteContent);
+    var wordsArray = noteContent.split(' ');
+    var colorArray = ["blue","white","grey","red","black"];
+    var colorPicked;
+
+    wordsArray.forEach(function(word){
+      if(colorArray.indexOf(word) > -1) {
+        colorPicked = (words[words.indexOf(source)]);
+        console.log(colorPicked)
+      }
+    });
+    init(colorPicked);
   }
 };
 /*-----------------------------
