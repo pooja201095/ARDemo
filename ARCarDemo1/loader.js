@@ -9,7 +9,7 @@ recognition.continuous = true;
 recognition.onresult = function(event) {
   var current = event.resultIndex;
 
-  var transcript = event.results[current][0].transcript;.
+  var transcript = event.results[current][0].transcript;
   var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
 
   if(!mobileRepeatBug) {
