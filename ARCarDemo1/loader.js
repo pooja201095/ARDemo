@@ -19,20 +19,6 @@ recognition.onresult = function(event) {
     init(noteContent);
   }
 };
-
-recognition.onstart = function() { 
-  instructions.text('Voice recognition activated. Try speaking into the microphone.');
-}
-
-recognition.onspeechend = function() {
-  instructions.text('You were quiet for a while so voice recognition turned itself off.');
-}
-
-recognition.onerror = function(event) {
-  if(event.error == 'no-speech') {
-    instructions.text('No speech was detected. Try again.');  
-  };
-}
 /*-----------------------------
       App buttons and input 
 ------------------------------*/

@@ -18,6 +18,10 @@ button:focus {
     text-align: center;
 }
 
+.input-single {
+    visibility: hidden;
+}
+
 .container h1 {
     margin-bottom: 20px;
 }
