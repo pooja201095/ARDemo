@@ -123,7 +123,7 @@ AFRAME.registerComponent("mythreejsthing", {
 
     // let func = this.speechFunc.bind(this);
     // $("#start-record-btn").click(func);
-    $("#start-record-btn").click(this.speechFunc, that);
+    $("#start-record-btn").on('click',that.speechFunc(that));
     // if (count == 1) {
     //     this.speechFunc();
     //     count++;
