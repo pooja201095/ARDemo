@@ -18,7 +18,7 @@ button:focus {
     text-align: center;
 }
 
-.input-single {
+.input-single textarea {
     visibility: hidden;
 }
 
