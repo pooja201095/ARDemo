@@ -18,9 +18,10 @@ AFRAME.registerComponent("mythreejsthing", {
     var instructions = $("#recording-instructions");
     var noteContent = "",
       color;
-    recognition.continuous = true;
+    recognition.continuous = true,
+    that = that;
 
-    recognition.onresult = function(event) {
+    recognition.onresult = function(event, that) {
       var current = event.resultIndex;
 
       var transcript = event.results[current][0].transcript;
@@ -41,7 +42,7 @@ AFRAME.registerComponent("mythreejsthing", {
             console.log(colorPicked);
           }
         });
-        this.init(colorPicked);
+        that.init(colorPicked);
       }
     };
     /*-----------------------------
