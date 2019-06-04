@@ -10,7 +10,7 @@ AFRAME.registerComponent("mythreejsthing", {
       default: 0
     }
   },
-  speechFunc: function() {
+  speechFunc: function(that) {
     var SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     var recognition = new SpeechRecognition();
@@ -119,14 +119,14 @@ AFRAME.registerComponent("mythreejsthing", {
     // $("body").append("<button class='startBtn'>Start</button>");  //"' + myName + '"')
     $("body").append(
       '<div class="container"><p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript"></a></p><div class="app"> <div class="input-single"><textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea></div><button id="start-record-btn" title="Start Recording">Start</button></div></div>'
-    ); 
+    );
 
-    let func = this.speechFunc.bind(this);
-    $("#start-record-btn").click(func);
+    // let func = this.speechFunc.bind(this);
+    // $("#start-record-btn").click(func);
+    $("#start-record-btn").click(this.speechFunc, that);
     // if (count == 1) {
     //     this.speechFunc();
     //     count++;
     // }
-    
   }
 });
