@@ -48,6 +48,10 @@ AFRAME.registerComponent("mythreejsthing", {
       App buttons and input 
 ------------------------------*/
 
+ if (noteContent.length) {
+        noteContent += " ";
+}
+recognition.start();
     // $("#start-record-btn").on("click", function(e) {
     //   if (noteContent.length) {
     //     noteContent += " ";
