@@ -17,9 +17,10 @@ AFRAME.registerComponent("mythreejsthing", {
     var noteTextarea = $("#note-textarea");
     var instructions = $("#recording-instructions");
     var noteContent = "",
-      color;
-    recognition.continuous = true,
-    that = that;
+      color,
+      that = that;
+      
+    recognition.continuous = true;
 
     recognition.onresult = function(event, that) {
       var current = event.resultIndex;
