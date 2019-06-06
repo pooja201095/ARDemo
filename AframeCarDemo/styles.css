@@ -41,7 +41,9 @@ button:focus {
 }
 
 .app {
-    margin: 40px auto;
+    margin: 0;
+    top: 0;
+    position: absolute;
 }
 
 #note-textarea {
@@ -88,7 +90,8 @@ button:focus {
 /*     width: auto;
     height: 20px; */
     position: absolute;
-    top: 100px;
+    top: 0;
+    padding: 0;
 }
 
 /* -- Demo ads -- */
