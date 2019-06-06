@@ -46,6 +46,7 @@ button:focus {
 
 #note-textarea {
     margin: 20px 0;
+    visibility: hidden;
 }
 
 #recording-instructions {
