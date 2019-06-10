@@ -31,6 +31,7 @@ AFRAME.registerComponent("mythreejsthing", {
                 noteContent = transcript;
                 noteTextarea.val(noteContent);
                 recognition.stop();
+                $('.'+colorPicked).removeClass('border');
                 var wordsArray = noteContent.split(" ");
                 var colorArray = ["blue", "white", "grey", "red", "black"];
                 var colorPicked;
@@ -41,6 +42,7 @@ AFRAME.registerComponent("mythreejsthing", {
                         console.log(colorPicked);
                     }
                 });
+                $('.'+colorPicked).addClass('border');
                 that.init(colorPicked);
             }
         };
@@ -110,11 +112,12 @@ AFRAME.registerComponent("mythreejsthing", {
         }
 
         $("body").append(
-            '<div class="container"><p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript"></a></p><div class="app"> <div class="input-single"><textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea></div><button id="start-record-btn" title="Start Recording">Start</button></div></div>'
+            '<div class="container"><div class="color-boxes"><span class="blue"></span><span class="grey"></span><span class="red"></span><span class="white"></span></div><p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript"></a></p><div class="app"> <div class="input-single"><textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea></div><button id="start-record-btn" title="Start Recording">Start</button></div></div>'
         );
 
         $(document).on("click", "#start-record-btn", function () {
             that.speechFunc(that);
+            $('.color-boxes').addClass('show');
         });
 
     }
