@@ -11,6 +11,39 @@ button:focus {
     outline: 0;
 }
 
+.color-boxes {
+    display: none;
+}
+
+.color-boxes.show {
+    display: block;
+}
+
+.color-boxes span {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: block;
+}
+.border {
+    border: 2px solid yellowgreen;
+}
+.blue {
+    color: #1a1aff;
+}
+
+.grey {
+    color: #9AA7AB;
+}
+
+.red {
+    color: #ff0000;
+}
+
+.white {
+    color: #fff;
+}
+
 .container {
     max-width: 700px;
     margin: 0 auto;
@@ -84,10 +117,10 @@ button:focus {
         margin-bottom: 10px;
     }
 
-}   
+}
 
 .container {
-/*     width: auto;
+    /*     width: auto;
     height: 20px; */
     position: absolute;
     top: 0;
@@ -97,5 +130,7 @@ button:focus {
 /* -- Demo ads -- */
 
 @media (max-width: 1200px) {
-    #bsaHolder{ display:none;}
+    #bsaHolder {
+        display: none;
+    }
 }
