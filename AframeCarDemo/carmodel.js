@@ -112,7 +112,7 @@ AFRAME.registerComponent("mythreejsthing", {
         }
 
         $("body").append(
-            '<div class="container"><div class="color-boxes"><span class="blue"></span><span class="grey"></span><span class="red"></span><span class="white"></span></div><p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript"></a></p><div class="app"> <div class="input-single"><textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea></div><button id="start-record-btn" title="Start Recording">Start</button></div></div>'
+            '<div class="container"><div class="color-boxes"><span class="black"></span><span class="blue"></span><span class="grey"></span><span class="red"></span><span class="white"></span></div><p><a class="tz-link" href="https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript"></a></p><div class="app"> <div class="input-single"><textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea></div><button id="start-record-btn" title="Start Recording">Start</button></div></div>'
         );
 
         $(document).on("click", "#start-record-btn", function () {
