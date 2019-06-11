@@ -31,19 +31,19 @@ button:focus {
     border: 2px solid yellowgreen;
 }
 .blue {
-    color: #1a1aff;
+    background-color: #1a1aff;
 }
 
 .grey {
-    color: #9AA7AB;
+    background-color: #9AA7AB;
 }
 
 .red {
-    color: #ff0000;
+    background-color: #ff0000;
 }
 
 .white {
-    color: #fff;
+    background-color: #fff;
 }
 
 .container {
