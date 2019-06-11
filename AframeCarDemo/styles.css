@@ -30,6 +30,7 @@ button:focus {
 .border {
     border: 2px solid yellowgreen;
 }
+
 .blue {
     background-color: #1a1aff;
 }
@@ -80,7 +81,7 @@ button:focus {
 
 .app {
     margin: 0;
-    top: 50px;
+    top: 70px;
     position: absolute;
 }
 
