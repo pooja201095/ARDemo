@@ -89,7 +89,7 @@ AFRAME.registerComponent("mythreejsthing", {
         if (!color) {
             loader.load(
                 // resource URL
-                "black.json",
+                "blue.json",
                 // onLoad callback
                 // Here the loaded data is assumed to be an object
                 function (obj) {
