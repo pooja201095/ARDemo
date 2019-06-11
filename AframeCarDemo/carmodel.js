@@ -117,7 +117,7 @@ AFRAME.registerComponent("mythreejsthing", {
 
         $(document).on("click", "#start-record-btn", function () {
             that.speechFunc(that);
-            $('.color-boxes').addClass('show');
+            $('.container').addClass('show');
         });
 
     }
