@@ -15,7 +15,7 @@ button:focus {
     display: none;
 }
 
-.show {
+.color-boxes.show {
     display: block;
     width: 50px;
     height: 185px;
