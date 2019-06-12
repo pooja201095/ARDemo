@@ -8,8 +8,7 @@ AFRAME.registerComponent("mythreejsthing", {
         },
         colorIndex: {
             default: 0
-        },
-        size: {type: 'int', default: 5}
+        }
     },
     speechFunc: function (that) {
         var SpeechRecognition =
